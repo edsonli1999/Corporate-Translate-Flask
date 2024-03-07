@@ -1,3 +1,11 @@
+# Summary
+- Takes in a user's phrase using a HTML form, transforms it using OpenAI API to a corporate-appropriate phrase, and renders that back out
+
+## Tech Stack
+- Framework: Python Flask
+- APIs: OpenAI API
+- Deployed on: TBC
+
 # CLI Commands
 
 ## Running:
