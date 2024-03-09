@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transformation Result</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+  <title>Corporatise</title>
 </head>
+
 <body>
-    <h1>Transformation Result</h1>
-    <p><strong>Original Phrase:</strong> {{ input_phrase }}</p>
-    <p><strong>Corporate Version:</strong> {{ transformed_phrase }}</p>
-    <a href="/">Back to Home</a>
+  <h1>Edson's corporate translater </h1>
+  <div class="main-container">
+    <div class="main-content">
+      <h2>Transformation Result</h2>
+      <p><strong>Original Phrase:</strong> {{ input_phrase }}</p>
+      <p><strong>Corporate Version:</strong> {{ transformed_phrase }}</p>
+      <a href="/">Back to Home</a>
+    </div>
+  </div>
 </body>
+
 </html>
