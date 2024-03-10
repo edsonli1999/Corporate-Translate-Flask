@@ -20,9 +20,7 @@ h1 {
   width: fit-content;  /* Adjust as needed */
   /* min-width: 300px;    
   min-height: 200px;    */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .main-content {
@@ -41,7 +39,8 @@ h1 {
   border-radius: 10px;
   backdrop-filter: blur(30px);
   background-color: rgba(65, 65, 65, 0.308);
-  border: 1px solid rgba(255, 255, 255, 0.089);
+  /* border: 1px solid rgba(255, 255, 255, 0.089); */
+  border: 1px solid silver;
 }
 
 .main-container::before {
@@ -71,6 +70,7 @@ h1 {
 
 /* Add this style for resizable textarea */
 .main-content textarea {
+  outline: 0;
   resize: both;
   overflow: auto;
   width: 100%;  /* Full width of the container */
@@ -80,10 +80,14 @@ h1 {
   max-height: 400px;
   margin-bottom: 10px;  /* Spacing between textarea and button */
   font-family: sans-serif;
+  padding: 8px 5px;
   background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha channel (0.0 to 1.0) for transparency */
   backdrop-filter: blur(30px);
+  border-radius: 8px;
+  border: 1px solid gray;
 }
 
 .main-content button {
+  align-self:flex-end;
   width: 100%;  /* Full width of the container */
 }
