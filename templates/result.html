@@ -14,8 +14,13 @@
   <div class="main-container">
     <div class="main-content">
       <h2>Transformation Result</h2>
-      <p><strong>Original Phrase:</strong> {{ input_phrase }}</p>
-      <p><strong>Corporate Version:</strong> {{ transformed_phrase }}</p>
+      <p><strong>Original Phrase:</strong></p>
+      <!-- Use a textarea for displaying the input_phrase -->
+      <textarea readonly>{{ input_phrase }}</textarea>
+
+      <p><strong>Corporate Version:</strong></p>
+      <!-- Use a textarea for displaying the transformed_phrase -->
+      <textarea readonly>{{ transformed_phrase }}</textarea>
       <a href="/">Back to Home</a>
     </div>
   </div>

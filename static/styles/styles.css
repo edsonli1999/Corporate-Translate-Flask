@@ -17,7 +17,9 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: fit-content;
+  width: fit-content;  /* Adjust as needed */
+  /* min-width: 300px;    
+  min-height: 200px;    */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,8 +27,12 @@ h1 {
 
 .main-content {
   position: relative;
-  width: 220px;
-  height: 250px;
+  width: auto;  /* Let the content dictate the width */
+  height: auto;  /* Let the content dictate the height */
+  min-width: 520px;   /* Minimum width */
+  min-height: 450px;  /* Minimum height */
+  max-width: 1000px;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,4 +59,31 @@ h1 {
 
 .main-container:hover::before {
   transform: translate(-50px, 50px);
+}
+
+
+/* Making it so that input and button are in different lines */
+.main-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Add this style for resizable textarea */
+.main-content textarea {
+  resize: both;
+  overflow: auto;
+  width: 100%;  /* Full width of the container */
+  min-width: 350px;
+  min-height: 50px;
+  max-width: 1000px;
+  max-height: 400px;
+  margin-bottom: 10px;  /* Spacing between textarea and button */
+  font-family: sans-serif;
+  background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha channel (0.0 to 1.0) for transparency */
+  backdrop-filter: blur(30px);
+}
+
+.main-content button {
+  width: 100%;  /* Full width of the container */
 }
