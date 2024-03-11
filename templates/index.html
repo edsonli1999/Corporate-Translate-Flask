@@ -14,16 +14,24 @@
   <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
   <div class="main-container">
     <div class="main-content">
-      <form action="/transform" method="post">
+      <form id="transformForm" action="/transform" method="post">
         <h2>Enter a Phrase</h2>
-        <textarea name="input_phrase" required></textarea>
+        <textarea id="inputPhrase" name="input_phrase" required></textarea>
         <button type="submit">Transform</button>
       </form>
     </div>
   </div>
 
-  <!-- Include the JavaScript for dark mode toggle -->
   <script>
+
+    // Function to trigger button click on Enter key press
+    document.getElementById('inputPhrase').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();  // Prevent the default behavior (newline)
+        document.getElementById('transformForm').submit();  // Trigger the form submission
+      }
+    });
+
     // Function to toggle dark mode
     function toggleDarkMode() {
       const body = document.body;
