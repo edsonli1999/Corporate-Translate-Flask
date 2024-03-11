@@ -16,3 +16,6 @@ instance/
 
 # Environment variables
 .env
+
+#To-do list
+to-do.txt
