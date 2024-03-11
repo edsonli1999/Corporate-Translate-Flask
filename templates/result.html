@@ -11,6 +11,7 @@
 
 <body>
   <h1>Edson's corporate translater </h1>
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
   <div class="main-container">
     <div class="main-content">
       <h2>Transformation Result</h2>
@@ -21,9 +22,34 @@
       <p><strong>Corporate Version:</strong></p>
       <!-- Use a textarea for displaying the transformed_phrase -->
       <textarea readonly>{{ transformed_phrase }}</textarea>
-      <a href="/">Back to Home</a>
+      <form action="/">
+        <button type="submit">Back to Home</button>
+      </form>
+      <!-- <a href="/">Back to Home</a> -->
     </div>
   </div>
+
+  <!-- Include the JavaScript for dark mode toggle -->
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle("dark-mode");
+
+      // Save the dark mode preference in a cookie
+      const darkModeEnabled = body.classList.contains("dark-mode");
+      document.cookie = `darkMode=${darkModeEnabled}; path=/`;
+    }
+
+    // Check if dark mode is enabled from the cookie
+    const darkModeCookie = document.cookie.split('; ').find(row => row.startsWith('darkMode='));
+    if (darkModeCookie) {
+      const darkModeEnabled = darkModeCookie.split('=')[1] === 'true';
+      if (darkModeEnabled) {
+        document.body.classList.add('dark-mode');
+      }
+    }
+  </script>
 </body>
 
 </html>

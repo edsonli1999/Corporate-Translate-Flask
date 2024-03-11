@@ -1,5 +1,3 @@
-/* static/styles/styles.css */
-
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -9,7 +7,11 @@ body {
 }
 
 h1 {
-  color: black;
+  color: #725AC1;
+}
+
+p {
+  font-size: medium;
 }
 
 .main-container {
@@ -43,12 +45,14 @@ h1 {
   border: 1px solid silver;
 }
 
-.main-container::before {
+/* Main content background ball animation thing */
+
+/* .main-container::before {
   width: 100px;
   height: 100px;
   content: "";
   position: absolute;
-  background-color: rgb(144, 161, 255);
+  background-color: #725AC1;
   z-index: -1;
   border-radius: 50%;
   left: 100px;
@@ -58,7 +62,7 @@ h1 {
 
 .main-container:hover::before {
   transform: translate(-50px, 50px);
-}
+} */
 
 
 /* Making it so that input and button are in different lines */
@@ -77,9 +81,10 @@ h1 {
   min-width: 350px;
   min-height: 50px;
   max-width: 1000px;
-  max-height: 400px;
+  max-height: 365px;
   margin-bottom: 10px;  /* Spacing between textarea and button */
   font-family: sans-serif;
+  font-size: medium;
   padding: 8px 5px;
   background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha channel (0.0 to 1.0) for transparency */
   backdrop-filter: blur(30px);
@@ -90,4 +95,63 @@ h1 {
 .main-content button {
   align-self:flex-end;
   width: 100%;  /* Full width of the container */
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  /* margin: 15px; */
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #725AC1;
+  border: 2px solid #725AC1;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+  /* transform: translateY(-2px); */
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+h1.dark-mode {
+  color: white;
+}
+
+.main-container.dark-mode {
+  background-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.089);
+}
+
+.main-content.dark-mode {
+  backdrop-filter: blur(30px);
+  background-color: rgba(255, 255, 255, 0.089);
+  border: 1px solid rgba(65, 65, 65, 0.308);
+}
+
+.main-content textarea.dark-mode {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main-content button.dark-mode {
+  background-color: #555;
+  color: white;
 }
