@@ -4,7 +4,7 @@
 ## Tech Stack
 - Framework: Python Flask
 - APIs: OpenAI API
-- Deployed on: TBC
+- Deployed on: Vercel
 
 # CLI Commands
 
