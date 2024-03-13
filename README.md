@@ -4,7 +4,7 @@
 ## Tech Stack
 - Framework: Python Flask
 - APIs: OpenAI API
-- Deployed on: TBC
+- Deployed on: Vercel
 
 # CLI Commands
 
@@ -24,4 +24,4 @@ pip install python-dotenv
 
 ## Update dependencies in requirements.txt
 - Go into venv
-- Pushing current dependencies using `pip freeze > requirements.txt`
+- Update current dependencies using `pip freeze > requirements.txt`
