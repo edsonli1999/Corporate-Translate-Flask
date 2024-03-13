@@ -1,9 +1,10 @@
 # Summary
-- Takes in a user's phrase using a HTML form, transforms it using OpenAI API to a corporate-appropriate phrase, and renders that back out
+- Takes in a user's phrase using a HTML form, transforms it using Google Gemini API to a corporate-appropriate phrase, and renders that back out
+- Note: In instances where the user's prompts do not make sense, the server may time out and direct the user to a 504 Timeout Page. Though unpolished, this is expected behaviour and could be fixed by going back and re-entering a different phrase. 
 
 ## Tech Stack
 - Framework: Python Flask
-- APIs: OpenAI API
+- APIs: Google Gemini API
 - Deployed on: Vercel
 
 # CLI Commands
