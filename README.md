@@ -9,7 +9,7 @@
 
 # CLI Commands
 
-## Running:
+## Running a local server:
 - To go into VENV: `venv\Scripts\activate`. To escape venv: `deactivate`
 - To run flask app: `python app.py`
 
