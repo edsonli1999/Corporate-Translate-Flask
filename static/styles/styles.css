@@ -19,30 +19,58 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: fit-content;  /* Adjust as needed */
+  width: fit-content;
   /* min-width: 300px;    
   min-height: 200px;    */
-  
+
 }
 
 .main-content {
   position: relative;
-  width: auto;  /* Let the content dictate the width */
-  height: auto;  /* Let the content dictate the height */
-  min-width: 520px;   /* Minimum width */
-  min-height: 450px;  /* Minimum height */
+  width: auto;
+  height: auto;
+  min-width: 520px;
+  min-height: 450px;
   max-width: 1000px;
   max-height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding: 20px 10px;
   border-radius: 10px;
   backdrop-filter: blur(30px);
   background-color: rgba(65, 65, 65, 0.308);
-  /* border: 1px solid rgba(255, 255, 255, 0.089); */
   border: 1px solid silver;
+}
+
+
+/* Add the provided media query here */
+@media screen and (max-width: 768px) {
+  .main-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    min-width: 90%;
+    min-height: auto;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .main-content textarea {
+    min-width: 90%;
+    max-width: 100%;
+    min-height: 100px;
+    max-height: 200px;
+    margin-bottom: 10px;
+    font-size: small;
+  }
+
+  .main-content button {
+    width: 100%;
+    /* Make the button full width */
+  }
 }
 
 /* Main content background ball animation thing */
@@ -77,24 +105,38 @@ p {
   outline: 0;
   resize: both;
   overflow: auto;
-  width: 100%;  /* Full width of the container */
-  min-width: 350px;
+  width: 100%;
   min-height: 50px;
-  max-width: 1000px;
   max-height: 365px;
-  margin-bottom: 10px;  /* Spacing between textarea and button */
+  margin-bottom: 10px;
   font-family: sans-serif;
   font-size: medium;
   padding: 8px 5px;
-  background-color: rgba(255, 255, 255, 0.4); /* Adjust the alpha channel (0.0 to 1.0) for transparency */
+  background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(30px);
   border-radius: 8px;
   border: 1px solid gray;
 }
 
+/* Define different min-width for small screens (< 600px) */
+@media screen and (max-width: 600px) {
+  .main-content textarea {
+    min-width: 250px;
+    max-width: 300px;
+  }
+}
+
+/* Define different min-width for large screens (>= 600px) */
+@media screen and (min-width: 600px) {
+  .main-content textarea {
+    min-width: 350px;
+    max-width: 1000px;
+  }
+}
+
 .main-content button {
-  align-self:flex-end;
-  width: 100%;  /* Full width of the container */
+  align-self: flex-end;
+  width: 100%;
 }
 
 button {
@@ -154,4 +196,42 @@ h1.dark-mode {
 .main-content button.dark-mode {
   background-color: #555;
   color: white;
+}
+
+.container-title {
+  display: flex;
+}
+
+.popup-container {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Hide the popup content by default */
+.popup-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  border-radius: 10px;
+  padding: 11px;
+  z-index: 1;
+}
+
+/* .popup-content.dark-mode {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  padding: 15px;
+  z-index: 1;
+} */
+
+.popup-content p {
+  color: white;
+}
+
+/* Show the popup content when hovering over the icon */
+#popup-icon:hover+.popup-content {
+  display: block;
 }

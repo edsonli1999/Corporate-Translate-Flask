@@ -12,16 +12,30 @@
 <body>
   <h1>Edson's corporate translater </h1>
   <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  <!-- <button onclick="toggleDarkMode()">☽</button> -->
   <div class="main-container">
     <div class="main-content">
       <form id="transformForm" action="/transform" method="post">
-        <h2>Enter a Phrase</h2>
+        <div class="container-title">
+          <div class="popup-container">
+            <h2 id="popup-icon">ⓘ</h2>
+            <div class="popup-content">
+              <p>Note: If the phrase entered does not make sense to the AI, <br> the server may time out and redirect
+                you to an Error page.<br> This is expected behavior, where the fix is to go back and <br> re-enter a
+                different phrase. <br><br> Some cases that trigger this are: <br> - Random strings of characters <br> -
+                Any words that trigger the AI content filter including harassment, <br> hate speech, sexually explicit
+                and/or dangerous content. <br> - Google Gemini server is down or experiencing heavy traffic.
+              </p>
+            </div>
+          </div>
+          <h2>Enter a Phrase</h2>
+        </div>
         <textarea id="inputPhrase" name="input_phrase" required></textarea>
         <button type="submit">Transform</button>
-        <p> Note: If the phrase entered does not make sense to the AI, <br> the server may time out and redirect you to a 504 Error page.<br> This is expected behavour, where the fix is to go back and <br> re-enter a different phrase. <br><br> Some cases that trigger this are: <br> - Random strings of characters <br> - Any words that trigger the AI content filter including harassment, <br> hate speech, sexually explicit and/or dangerous content. <br> - Google Gemini server is down or experiencing heavy traffic. </p>
-      </div>
       </form>
 
+
+    </div>
   </div>
 
   <script>
@@ -52,6 +66,15 @@
         document.body.classList.add('dark-mode');
       }
     }
+
+    // Click activation for popup container
+    const popupContainer = document.querySelector('.popup-container');
+    const popupContent = document.querySelector('.popup-content');
+
+    popupContainer.addEventListener('click', function () {
+      popupContent.style.display = (popupContent.style.display === 'block') ? 'none' : 'block';
+    });
+
   </script>
 </body>
 
