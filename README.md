@@ -7,6 +7,10 @@
 - APIs: Google Gemini API
 - Deployed on: Vercel
 
+# Notable features:
+- Dark mode
+- Works on mobile (mainly portrait, landscape is still not very usable)
+
 # CLI Commands
 
 ## Running a local server:
