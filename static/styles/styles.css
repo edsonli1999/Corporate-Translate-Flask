@@ -3,11 +3,13 @@ body {
   background-color: #f0f0f0;
   color: black;
   margin: 0;
-  padding: 0;
+  padding: 5px;
+  padding-left: 20px;
 }
 
 h1 {
   color: #725AC1;
+  font-size: x-large;
 }
 
 p {
