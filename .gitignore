@@ -20,3 +20,5 @@ instance/
 #To-do list
 to-do.txt
 .vercel
+
+external_llm_DA_task/
