@@ -5,9 +5,12 @@ import os
 # AI APIs
 from openai import OpenAI
 import google.generativeai as genai
+from google.api_core import exceptions as google_api_exceptions
 
 app = Flask(__name__)
 load_dotenv()
+
+GEMINI_MODEL_NAME = os.environ.get("GEMINI_MODEL_NAME", "gemini-1.5-flash")
 
 # Routes
 
@@ -62,48 +65,48 @@ def transform_phrase_OpenAI(phrase):
 def transform_phrase_gemini(phrase):
     
     gemini_api_key = os.environ.get("GEMINI_API_KEY")
-    genai.configure(api_key=gemini_api_key)
     
-    # Set up the model
-    generation_config = {
-        "temperature": 0.9,
-        "top_p": 1,
-        "top_k": 1,
-        "max_output_tokens": 2048,
-    }
-
-    safety_settings = [
-    {
-        "category": "HARM_CATEGORY_HARASSMENT",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    {
-        "category": "HARM_CATEGORY_HATE_SPEECH",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    {
-        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    {
-        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-        "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-    },
-    ]
-
-    model = genai.GenerativeModel(model_name="gemini-1.0-pro",
-                                generation_config=generation_config,
-                                safety_settings=safety_settings)
-
-
-    # model = genai.GenerativeModel("gemini-pro")
-
-    chat = model.start_chat(history=[])
-    context = "In this chat, you will act as a phrase transformer, where you transform everyday phrases into phrases that are appropriate for a corporate setting. The tone of your transformed phrase should be cordial and pleasant, and exercise empathy for the external party. An example transformation to the phrase: 'Stay in your lane' would be 'To foster a harmonious and collaborative work environment, let's respectfully adhere to our defined roles and responsibilities.'  Please transform: "
-    response = chat.send_message(context + phrase)
+    if not gemini_api_key:
+        print("ERROR: GEMINI_API_KEY is not set")
+        return "Unable to process your request. Please contact support."
     
-    return response.text
-    # return "Wee you have transformed me to something corporate like using Google Gemini!"
+    try:
+        genai.configure(api_key=gemini_api_key)
+        
+        # Set up the model
+        generation_config = {
+            "temperature": 0.9,
+            "top_p": 1,
+            "top_k": 1,
+            "max_output_tokens": 2048,
+        }
+
+        model = genai.GenerativeModel(
+            model_name=GEMINI_MODEL_NAME,
+            generation_config=generation_config
+        )
+
+        for m in genai.list_models():
+            print(m.name, m.supported_generation_methods)
+
+        prompt = "In this chat, you will act as a phrase transformer, where you transform everyday phrases into phrases that are appropriate for a corporate setting. The tone of your transformed phrase should be cordial and pleasant, and exercise empathy for the external party. An example transformation to the phrase: 'Stay in your lane' would be 'To foster a harmonious and collaborative work environment, let's respectfully adhere to our defined roles and responsibilities.'  Please transform: "
+        
+        response = model.generate_content(prompt + phrase)
+        
+        result_text = response.text.strip() if response.text else ""
+        
+        if not result_text:
+            print("WARNING: Empty response from Gemini API")
+            return "No response generated. Please try again with a different phrase."
+        
+        return result_text
+        
+    except google_api_exceptions.InvalidArgument as e:
+        print(f"ERROR: Invalid argument - {str(e)}")
+        return "The AI model is not available. Please try again later."
+    except Exception as e:
+        print(f"ERROR: Gemini API error - {str(e)}")
+        return "Unable to transform your phrase at this time. Please try again later."
     
 
 if __name__ == '__main__':
